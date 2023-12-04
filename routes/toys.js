@@ -18,6 +18,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+//sara lea
 // http://localhost:3000/toys/search/?s=
 // ?s= -> query string
 router.get("/search/", async (req, res) => {
