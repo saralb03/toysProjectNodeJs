@@ -10,7 +10,6 @@ let userSchema = new mongoose.Schema({
   date_created: {
     type: Date, default: Date.now()
   },
-  // role of the user if regular user or admin 
   role: {
     type: String, default: "user"
   }
@@ -18,7 +17,6 @@ let userSchema = new mongoose.Schema({
 
 exports.UserModel = mongoose.model("users", userSchema);
 
-//                      הוספת הרול 
 exports.createToken = (_id, role) => {
   let token = jwt.sign({ _id, role }, config.tokenSecret, { expiresIn: "120mins" });
   return token;

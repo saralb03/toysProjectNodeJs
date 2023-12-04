@@ -17,7 +17,6 @@ exports.auth = (req,res,next) => {
     return res.status(401).json({msg:"Token invalid or expired, log in again or you hacker!"})
   }
 }
-//                                       בדיקת אדמין 
 exports.authAdmin = (req,res,next) => {
   let token = req.header("x-api-key");
   if(!token){
@@ -25,7 +24,6 @@ exports.authAdmin = (req,res,next) => {
   }
   try{
     let decodeToken = jwt.verify(token,config.tokenSecret);
-    // check if the role in the token of admin
     if(decodeToken.role != "admin"){
       return res.status(401).json({msg:"Token invalid or expired, code: 6A"})
     }
