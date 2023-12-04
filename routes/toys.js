@@ -158,6 +158,9 @@ router.delete("/:idDel",auth, async(req,res) => {
     //    let data = await ToyModel.deleteOne({_id:idDel,user_id:req.tokenData._id})
     let data = await ToyModel.deleteOne({ _id: idDel });
     // "deletedCount": 1 -  אם יש הצלחה של מחיקה
+    if (data.deletedCount == 0) {
+      return res.status(403).json({ msg: "Unauthorized to delete this toy" });
+    }
     res.json(data);
   } catch (err) {
     console.log(err);
