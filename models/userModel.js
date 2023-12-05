@@ -22,7 +22,7 @@ exports.createToken = (_id, role) => {
   return token;
 }
 
-exports.validUser = (_reqBody) => {
+exports.validateUser = (_reqBody) => {
   let joiSchema = Joi.object({
     name: Joi.string().min(2).max(99).required(),
     email: Joi.string().min(2).max(99).email().required(),
@@ -32,7 +32,7 @@ exports.validUser = (_reqBody) => {
   return joiSchema.validate(_reqBody);
 }
 
-exports.validLogin = (_reqBody) => {
+exports.loginValid = (_reqBody) => {
   let joiSchema = Joi.object({
     email: Joi.string().min(2).max(99).email().required(),
     password: Joi.string().min(3).max(99).required()
